@@ -13,8 +13,11 @@ puts "Cleaning database..."
 Tool.destroy_all
 puts "Cleaning database..."
 User.destroy_all
+puts "Cleaning database..."
+Booking.destroy_all
 
-5.times do
+
+10.times do
   puts "Creating users..."
   user = User.new(
     email: Faker::Internet.email,
@@ -24,6 +27,7 @@ User.destroy_all
   puts "Created #{user.email}"
 end
 puts "Finished! Created #{User.count} users."
+
 
 25.times do
   puts "Creating tools..."
@@ -39,3 +43,19 @@ puts "Finished! Created #{User.count} users."
   puts "Created #{tool.name}"
 end
 puts "Finished! Created #{Tool.count} tools."
+
+
+statuses = ["pending", "accepted", "declined"]
+
+10.times do
+  puts "Creating bookings..."
+  booking = Booking.new(
+    user_id: User.all.ids.sample,
+    tool_id: Tool.all.ids.sample,
+    start_date: Faker::Date.between(from: '2025-03-04', to: '2025-03-15'),
+    end_date: Faker::Date.between(from: '2025-03-16', to: '2025-03-30'),
+    status: statuses.sample
+  )
+  booking.save!
+end
+puts "Finished! Created #{Booking.count} booking."
