@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="form-all rounded-5 shadow">
+    <div class="bg-img-sign rounded-5">
+      <h2>Créez votre nouvel annonce</h2>
+      <p>Louer plus vite, gagner plus vite</p>
+    </div>
+    <div class="form-input">
+<<<<<<< HEAD
+      <h2>Nouvelle annonce</h2>
+      <%= simple_form_for @tool do |f| %>
+        <%= f.input :name %>
+        <%= f.input :price%>
+        <%= f.input :description%>
+        <%= f.input :localisation%>
+        <%= f.input :photo%>
+        <%= f.button :submit, "Submit add" %>
+=======
+       <%= simple_form_for @tool do |f| %>
+        <%= f.input :name, placeholder: "Nom de l'outil" %>
+        <%= f.input :price, placeholder: "prix en €"%>
+        <%= f.input :description, placeholder: "Informtions supplémentaires%>
+        <%= f.input :localisation, placeholder: "Votre adresse"%>
+        <%= f.input :photo, placeholder: "Votre photo"%>
+        <%= f.submit "Publier l'annonce", class: "btn btn-primary" %>
+>>>>>>> b6a960c2ea2eaa17b45940715678ba89a45d0d6c
+      <% end %>
+    </div>
+  </div>
+</div>
+
