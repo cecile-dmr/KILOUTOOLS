@@ -1,0 +1,33 @@
+.button-form {
+  background-color: black;
+  border: black solid 1px;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: rgb(50, 50, 50);
+    border: rgb(50, 50, 50) solid 1px;
+  }
+}
+
+.text-navy-blue {
+  color: $navy-blue;
+}
+
+.form-input {
+  padding: 2em;
+}
+
+.bg-img-sign {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-image: url(https://imgs.search.brave.com/91uCwGwDdHjl1quNk9P0JX6k2TNgW_ikDXsVuhufy6I/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/a291ZGVwb3VjZS5m/ci9zdGF0aWMvZDA0/MDA5MDBiZTgwYTUx/ZmZiZTI3NTBlYzI5/NDhkMzcvYWIyNDMv/b3V0aWxzLWluZGlz/cGVuc2FibGVzLmpw/Zw);
+  background-size: cover;
+  background-position: center;
+  padding: 2em;
+  color: white;
+  text-align: start;
+  text-shadow: 1px 1px 2px black;
+}

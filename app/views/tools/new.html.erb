@@ -1,9 +1,19 @@
-<h1>New tool</h1>
-<%= simple_form_for @tool do |f| %>
-  <%= f.input :name %>
-  <%= f.input :price%>
-  <%= f.input :description%>
-  <%= f.input :localisation%>
-  <%= f.input :photo%>
-  <%= f.submit "Submit add", class: "btn btn-primary" %>
-<% end %>
+<div class="container">
+  <h1>Nouvel outil</h1>
+  <div class="d-flex bg-light rounded-5">
+    <div class="bg-img-sign rounded-5">
+      <h2>Créez votre nouvel annonce</h2>
+      <p>Louer plus vite, gagner plus vite</p>
+    </div>
+    <div class="form-input">
+      <%= simple_form_for @tool do |f| %>
+        <%= f.input :name %>
+        <%= f.input :price%>
+        <%= f.input :description%>
+        <%= f.input :localisation%>
+        <%= f.input :photo%>
+        <%= f.button :submit, "Submit add" %>
+      <% end %>
+    </div>
+  </div>
+</div>
