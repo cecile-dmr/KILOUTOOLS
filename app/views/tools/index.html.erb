@@ -1,1 +1,6 @@
 <h1>Index view</h1>
+
+<% @tools.each do |tool| %>
+<%= link_to tool.name, tool %>
+
+<% end %>

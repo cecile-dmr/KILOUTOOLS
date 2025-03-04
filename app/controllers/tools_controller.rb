@@ -23,6 +23,26 @@ class ToolsController < ApplicationController
     end
   end
 
+  def edit
+    @tool = Tool.find(params[:id])
+  end
+
+  def update
+    @tool = Tool.find(params[:id])
+    if @tool.update(tool_params)
+      #flash[:success] = "Tool updated!"
+      redirect_to tool_path(@tool), notice: "Outil mis à jour !"
+    else
+      render action :edit
+    end
+  end
+
+  def destroy
+    @tool = Tool.find(params[:id])
+    @tool.destroy
+    redirect_to root_path, status: :see_other
+  end
+
   private
 
   def tool_params
