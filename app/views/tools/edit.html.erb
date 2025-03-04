@@ -1,9 +1,9 @@
-<h1>Ajouter une annonce</h1>
+<h1>Modifier l'annonce de l'outil</h1>
 <%= simple_form_for @tool do |f| %>
   <%= f.input :name %>
   <%= f.input :price%>
   <%= f.input :description%>
   <%= f.input :localisation%>
   <%= f.input :photo%>
-  <%= f.submit "Publier l'annonce", class: "btn btn-primary" %>
+  <%= f.submit "Valider les modifications", class: "btn btn-primary" %>
 <% end %>
