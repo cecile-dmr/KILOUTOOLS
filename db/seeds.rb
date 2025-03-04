@@ -9,11 +9,33 @@
 #   end
 # require "faker"
 
-# 25.times do
-#   tool = Tool.new(
-#     name:
-#     price
-#     description
-#     localisation
-#     photo
-#   )
+puts "Cleaning database..."
+Tool.destroy_all
+puts "Cleaning database..."
+User.destroy_all
+
+5.times do
+  puts "Creating users..."
+  user = User.new(
+    email: Faker::Internet.email,
+    password: Faker::Internet.password
+  )
+  user.save!
+  puts "Created #{user.email}"
+end
+puts "Finished! Created #{User.count} users."
+
+25.times do
+  puts "Creating tools..."
+  tool = Tool.new(
+    name: Faker::Games::Minecraft.item,
+    price: Faker::Commerce.price,
+    description: Faker::Commerce.product_name,
+    localisation: Faker::Address.city,
+    photo: Faker::Placeholdit.image(size: '50x50', format: 'jpg'),
+    user: User.first
+  )
+  tool.save!
+  puts "Created #{tool.name}"
+end
+puts "Finished! Created #{Tool.count} tools."
