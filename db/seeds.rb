@@ -9,12 +9,12 @@
 #   end
 # require "faker"
 
-puts "Cleaning database..."
-Tool.destroy_all
-puts "Cleaning database..."
-User.destroy_all
-puts "Cleaning database..."
 Booking.destroy_all
+puts "Cleaning bookings..."
+Tool.destroy_all
+puts "Cleaning tools..."
+User.destroy_all
+puts "Cleaning users..."
 
 
 10.times do
