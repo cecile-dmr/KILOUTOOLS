@@ -1,13 +1,9 @@
-<div class="container">
-<br>
-  <h1>New tool</h1>
-  <%= simple_form_for @tool do |f| %>
-    <%= f.input :name, placeholder: "Nom de l'outil" %>
-    <%= f.input :price, placeholder: "prix en €" %>
-    <%= f.input :description, placeholder: "Informtions supplémentaires" %>
-    <%= f.input :localisation, placeholder: "Votre adresse" %>
-    <%= f.input :photo, placeholder: "Votre photo" %>
-    <%= f.submit "Submit add", class: "btn btn-primary" %>
-  <% end %>
-  <br>
-</div>
+<h1>Ajouter une annonce</h1>
+<%= simple_form_for @tool do |f| %>
+  <%= f.input :name, placeholder: "Nom de l'outil" %>
+  <%= f.input :price, placeholder: "prix en €"%>
+  <%= f.input :description, placeholder: "Informtions supplémentaires%>
+  <%= f.input :localisation, placeholder: "Votre adresse"%>
+  <%= f.input :photo, placeholder: "Votre photo"%>
+  <%= f.submit "Publier l'annonce", class: "btn btn-primary" %>
+<% end %>
