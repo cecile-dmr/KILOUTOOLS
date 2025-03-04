@@ -4,6 +4,8 @@
   color: white;
   padding: 5px 10px;
   border-radius: 4px;
+  width: 100%;
+  margin-top: 5px;
 
   &:hover {
     background-color: rgb(50, 50, 50);
@@ -11,12 +13,9 @@
   }
 }
 
-.text-navy-blue {
-  color: $navy-blue;
-}
-
 .form-input {
   padding: 2em;
+  width: 50%;
 }
 
 .bg-img-sign {
@@ -30,4 +29,11 @@
   color: white;
   text-align: start;
   text-shadow: 1px 1px 2px black;
+  width: 50%;
+}
+
+.form-all {
+  display: flex;
+  background-color: $light;
+  margin: 50px 0px;
 }

@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+<h1>Index view</h1>
+
+<% @tools.each do |tool| %>
+<%= link_to tool.name, tool %>
+
+<% end %>
+
+
+=======
 <h1>Les outils dans votre région</h1>
   <div class="containergrid">
     <% @tools.each do |tool| %>
@@ -15,3 +25,4 @@
       <% end  %>
     <% end %>
   </div>
+>>>>>>> 63cc08e24de5ec7fb252a8f734572e67b751cd92
