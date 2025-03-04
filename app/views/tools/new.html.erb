@@ -1,9 +1,20 @@
-<h1>Ajouter une annonce</h1>
-<%= simple_form_for @tool do |f| %>
-  <%= f.input :name, placeholder: "Nom de l'outil" %>
-  <%= f.input :price, placeholder: "prix en €"%>
-  <%= f.input :description, placeholder: "Informtions supplémentaires%>
-  <%= f.input :localisation, placeholder: "Votre adresse"%>
-  <%= f.input :photo, placeholder: "Votre photo"%>
-  <%= f.submit "Publier l'annonce", class: "btn btn-primary" %>
-<% end %>
+<div class="container">
+  <h1>Nouvel outil</h1>
+  <div class="d-flex bg-light rounded-5">
+    <div class="bg-img-sign rounded-5">
+      <h2>Créez votre nouvel annonce</h2>
+      <p>Louer plus vite, gagner plus vite</p>
+    </div>
+    <div class="form-input">
+       <%= simple_form_for @tool do |f| %>
+        <%= f.input :name, placeholder: "Nom de l'outil" %>
+        <%= f.input :price, placeholder: "prix en €"%>
+        <%= f.input :description, placeholder: "Informtions supplémentaires%>
+        <%= f.input :localisation, placeholder: "Votre adresse"%>
+        <%= f.input :photo, placeholder: "Votre photo"%>
+        <%= f.submit "Publier l'annonce", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
