@@ -1,22 +1,58 @@
-<div class="container tool-show">
 
-  <h1 class="tool-title"><%= @tool.name %></h1>
+<%# // SHOW DU PROPRIETAIRE DE L OUTIL %>
 
-
-  <div class="tool-details">
-    <p><strong>Prix :</strong> <%= number_to_currency(@tool.price, unit: "€") %></p>
-    <p><strong>Description :</strong> <%= @tool.description %></p>
-    <p><strong>Localisation :</strong> <%= @tool.localisation %></p>
-  </div>
+      <div class="container tool-show">
+<div class="row">
+<div class="col-6" > INSERER L IMAGE DU TOOL </div>
+<div class="col-6">
+        <h1 class="tool-title"><%= @tool.name %></h1>
 
 
-  <div class="tool-actions">
-    <%= link_to "Modifier", edit_tool_path(@tool), class: "btn btn-primary" %>
-    <%= button_to "Supprimer", tool_path(@tool), method: :delete, data: { turbo_confirm: "Es-tu sûr de vouloir supprimer cet outil ?" }, class: "btn btn-danger" %>
-  </div>
+        <div class="tool-details">
+          <p><strong>Prix :</strong> <%= number_to_currency(@tool.price, unit: "€") %></p>
+          <p><strong>Description :</strong> <%= @tool.description %></p>
+          <p><strong>Localisation :</strong> <%= @tool.localisation %></p>
+        </div>
 
 
-  <div class="back-button">
-    <%= link_to "Retour à la liste", root_path, class: "btn btn-secondary" %>
-  </div>
+        <div class="tool-actions">
+          <%= link_to "Modifier", edit_tool_path(@tool), class: "btn btn-primary" %>
+          <%= button_to "Supprimer", tool_path(@tool), method: :delete, data: { turbo_confirm: "Es-tu sûr de vouloir supprimer cet outil ?" }, class: "btn btn-danger" %>
+        </div>
+
+
+        <div class="back-button">
+          <%= link_to "Retour à la liste", root_path, class: "btn btn-secondary" %>
+        </div>
 </div>
+</div>
+      </div>
+
+<%# SHOW DU LOCATAIRE  %>
+
+
+      <div class="container tool-show">
+      <div class="row">
+<div class="col-6" > INSERER L IMAGE DU TOOL </div>
+      <div class="col-6">
+        <h1 class="tool-title"><%= @tool.name %></h1>
+
+
+        <div class="tool-details">
+          <p><strong>Prix :</strong> <%= number_to_currency(@tool.price, unit: "€") %></p>
+          <p><strong>Description :</strong> <%= @tool.description %></p>
+          <p><strong>Localisation :</strong> <%= @tool.localisation %></p>
+        </div>
+
+
+        <div class="tool-actions">
+          <%= button_to "Reserver",  class: "btn btn-primary" %>
+        </div>
+
+
+        <div class="back-button">
+          <%= link_to "Retour à la liste", root_path, class: "btn btn-secondary" %>
+        </div>
+      </div>
+      </div>
+      </div>
