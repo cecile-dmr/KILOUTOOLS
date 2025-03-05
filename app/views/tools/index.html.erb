@@ -2,7 +2,7 @@
     <% @tools.each do |tool| %>
       <%= link_to tool, class:"p-0" do  %>
         <div class="card-trip ">
-          <%= image_tag tool.photo %>
+          <%= cl_image_tag tool.photo.key %>
           <div class="card-trip-infos">
             <div>
               <h2> <%= tool.name %></h2>
@@ -14,4 +14,3 @@
       <% end  %>
     <% end %>
   </div>
-
