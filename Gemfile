@@ -2,10 +2,13 @@ source "https://rubygems.org"
 
 ruby "3.3.5"
 
+# installée par Céc
+gem "cloudinary"
+
 #installé par Aldjia
 gem "faker"
 
-#installer par Céc
+#installée par Céc
 gem "devise"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
