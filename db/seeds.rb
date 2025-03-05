@@ -28,19 +28,19 @@ test = '../app/assets/images/marteau.jpg'
 
 
 tool = Tool.new(name: "Marteau", price: 15, description: "Cet outil est en parfait état, comme neuf, prêt à l’emploi.", localisation: "Lille", user: cecile)
-filepath = Rails.root.join('app/assets/images/marteau.jpg')
+filepath = Rails.root.join('db/images/marteau.jpg')
 file = File.open(filepath)
 tool.photo.attach(io: file, filename: "marteau.jpg", content_type: "image/jpg")
 tool.save
 
 tool = Tool.new(name: "Pince", price: "10", description: "Légeres traces d’utilisation, mais fonctionne parfaitement.", localisation: "Lille", user: cecile)
-filepath = Rails.root.join('app/assets/images/pince.jpg')
+filepath = Rails.root.join('db/images/pince.jpg')
 file = File.open(filepath)
 tool.photo.attach(io: file, filename: "pince.jpg", content_type: "image/jpg")
 tool.save
 
 tool = Tool.new(name: "Scie-sauteuse", price: "20", description: "Présente des signes d’usage régulier, mais totalement fonctionnel.", localisation: "Lomme", user: baptiste)
-filepath = Rails.root.join('app/assets/images/scie_sauteuse.jpg')
+filepath = Rails.root.join('db/images/scie_sauteuse.jpg')
 file = File.open(filepath)
 tool.photo.attach(io: file, filename: "scie_sauteuse.jpg", content_type: "image/jpg")
 tool.save
@@ -48,7 +48,7 @@ tool.save
 tool = Tool.new(name: "Perceuse", price: "20", description: "Aucun signe d’usure, elle fonctionne impeccablement.", localisation: "Lambersart",
 
   user: aldjia)
-filepath = Rails.root.join('app/assets/images/perceuse.jpg')
+filepath = Rails.root.join('db/images/perceuse.jpg')
 file = File.open(filepath)
 tool.photo.attach(io: file, filename: "perceuse.jpg", content_type: "image/jpg")
 tool.save
