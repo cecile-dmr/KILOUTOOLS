@@ -7,4 +7,6 @@ class Tool < ApplicationRecord
   validates :description, presence: true
   validates :localisation, presence: true
   validates :photo, presence: true
+
+  has_one_attached :photo
 end
