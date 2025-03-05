@@ -3,7 +3,7 @@
     <% @tools.each do |tool| %>
       <%= link_to tool, class:"p-0" do  %>
         <div class="card-trip ">
-          <img src="https://www.cestdeuxeuros.com/sites/cestdeuxeuros/files/astuce/2021-02/tools-864983_1280.jpg" />
+          <%= image_tag tool.photo %>
           <div class="card-trip-infos">
             <div>
               <h2> <%= tool.name %></h2>
@@ -15,3 +15,4 @@
       <% end  %>
     <% end %>
   </div>
+          <%= console %>
