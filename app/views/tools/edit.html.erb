@@ -1,9 +1,21 @@
-<h1>Modifier l'annonce de l'outil</h1>
-<%= simple_form_for @tool do |f| %>
-  <%= f.input :name %>
-  <%= f.input :price%>
-  <%= f.input :description%>
-  <%= f.input :localisation%>
-  <%= f.input :photo%>
-  <%= f.submit "Valider les modifications", class: "btn btn-primary" %>
-<% end %>
+<div class="container">
+  <div class="form-all rounded-5 shadow">
+    <div class="bg-img-sign rounded-5">
+      <h2>Modifier la description</h2>
+      <p> Votre outils</p>
+    </div>
+    <div class="form-input">
+
+    <h1>Modifier l'annonce de l'outil</h1>
+    <%= simple_form_for @tool do |f| %>
+      <%= f.input :name %>
+      <%= f.input :price%>
+      <%= f.input :description%>
+      <%= f.input :localisation%>
+      <%= f.input :photo%>
+      <%= f.submit "Valider les modifications", class: "button-form" %>
+    <% end %>
+
+    </div>
+  </div>
+</div>
