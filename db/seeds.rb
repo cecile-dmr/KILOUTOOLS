@@ -48,8 +48,7 @@ tool.save
 tool = Tool.new(name: "Perceuse", price: "20", description: "Aucun signe d’usure, elle fonctionne impeccablement.", localisation: "Lambersart",
 
   user: aldjia)
-filepath = Rails.root.join('db/images/perceuse.jpg')
-file = File.open(filepath)
+  file = URI.parse("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg").open
 tool.photo.attach(io: file, filename: "perceuse.jpg", content_type: "image/jpg")
 tool.save
 
