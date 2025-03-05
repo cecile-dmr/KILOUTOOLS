@@ -19,6 +19,10 @@
 body {
   background: #e6e2df;
   // background: linear-gradient(204deg, #ffc59a 0%, #e38e49 80%);
+  margin: 0;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 }
 
 .kiloutools-nav {   // bold 800 italic
@@ -28,4 +32,3 @@ body {
   font-size: 25px;
   font-style: italic;
  }
-;
