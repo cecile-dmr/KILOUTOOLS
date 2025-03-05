@@ -6,15 +6,14 @@
     </div>
     <div class="form-input">
 
-    <h1>Modifier l'annonce de l'outil</h1>
-    <%= simple_form_for @tool do |f| %>
-      <%= f.input :name %>
-      <%= f.input :price%>
-      <%= f.input :description%>
-      <%= f.input :localisation%>
-      <%= f.input :photo%>
-      <%= f.submit "Valider les modifications", class: "button-form" %>
-    <% end %>
+      <%= simple_form_for @tool do |f| %>
+        <%= f.input :name %>
+        <%= f.input :price%>
+        <%= f.input :description%>
+        <%= f.input :localisation%>
+        <%= f.input :photo%>
+        <%= f.submit "Valider les modifications", class: "button-form" %>
+      <% end %>
 
     </div>
   </div>

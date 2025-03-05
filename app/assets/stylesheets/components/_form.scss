@@ -1,6 +1,6 @@
 .button-form {
-  background-color: black;
-  border: black solid 1px;
+  background-color: $light-orange;
+  border: $light-orange solid 1px;
   color: white;
   padding: 5px 10px;
   border-radius: 4px;
@@ -8,8 +8,8 @@
   margin-top: 5px;
 
   &:hover {
-    background-color: rgb(50, 50, 50);
-    border: rgb(50, 50, 50) solid 1px;
+    background-color: $light-orange-hover;
+    border: $light-orange-hover solid 1px;
   }
 }
 
