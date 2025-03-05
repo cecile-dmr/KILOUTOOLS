@@ -10,7 +10,7 @@
         <%= f.input :price, placeholder: "prix en €" %>
         <%= f.input :description, placeholder: "Informtions supplémentaires" %>
         <%= f.input :localisation, placeholder: "Votre adresse"%>
-        <%= f.input :photo, placeholder: "Votre photo" %>
+        <%= f.input :photo, as: :file, placeholder: "Votre photo" %>
         <%= f.submit "Publier l'annonce", class: "button-form" %>
       <% end %>
     </div>
