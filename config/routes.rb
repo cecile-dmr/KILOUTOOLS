@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: "tools#index"
   resources :tools, except: :index
+  get "dashboard", to: "pages#dashboard"
 end
