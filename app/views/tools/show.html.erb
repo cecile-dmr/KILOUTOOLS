@@ -19,8 +19,8 @@
               <div class="d-flex justify-content-around" >
                 <div class="tool-actions">
 
-<!-- Button trigger modal -->
-                  <button type="button" class="btn button-search" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-search" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Reserver
                   </button>
                   <!-- Modal -->
@@ -35,19 +35,17 @@
                         <%= simple_form_for [@tool, @booking], method: :post do |f| %>
                                           <%= f.input :start_date,
                                               as: :string,
-                                              input_html: { data: { controller: "datepicker" } } %>
+                                              input_html: { data: { controller: "datepicker", datepicker_target: "startDate" } } %>
 
                                           <%= f.input :end_date,
                                               as: :string,
-                                              input_html: { data: { controller: "datepicker" } } %>
+                                              input_html: { data: { controller: "datepicker", datepicker_target: "endDate" } } %>
                                               <%= f.submit %>
                                         <% end  %>
                         </div>
                       </div>
                     </div>
                   </div>
-<%# ZONE DE TRAVAIL %>
-
                 </div>
 
 
