@@ -5,6 +5,19 @@
   </div>
 </div>
 
+<div class="row justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: root_path, method: :get, class: "input-group" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Rechercher un outil..."
+        %>
+      <%= submit_tag "Rechercher", name: "", class: "btn-search" %>
+    <% end %>
+  </div>
+</div>
+
    <div class="containergrid">
     <% @tools.each do |tool| %>
       <%= link_to tool, class:"p-0 text-decoration-none" do  %>

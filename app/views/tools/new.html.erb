@@ -1,16 +1,16 @@
 <div class="container">
   <div class="form-all rounded-5 shadow">
     <div class="bg-img-sign rounded-5">
-      <h2>Créez votre nouvel annonce</h2>
-      <p>Louer plus vite, gagner plus vite</p>
+      <h2>Créer une nouvelle annonce</h2>
+      <p>Louer vite et bien avec Kiloutools</p>
     </div>
     <div class="form-input">
        <%= simple_form_for @tool do |f| %>
         <%= f.input :name, placeholder: "Nom de l'outil" %>
         <%= f.input :price, placeholder: "prix en €" %>
-        <%= f.input :description, placeholder: "Informtions supplémentaires" %>
-        <%= f.input :localisation, placeholder: "Votre adresse"%>
-        <%= f.input :photo, as: :file, placeholder: "Votre photo" %>
+        <%= f.input :description, placeholder: "Informations supplémentaires" %>
+        <%= f.input :localisation, placeholder: "Adresse"%>
+        <%= f.input :photo, as: :file, placeholder: "Uploader une photo" %>
         <%= f.submit "Publier l'annonce", class: "button-form" %>
       <% end %>
     </div>

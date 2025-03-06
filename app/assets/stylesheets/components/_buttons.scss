@@ -1,6 +1,17 @@
 .btn-reserve {
   border-radius: 5px;
   background-color: rgb(247, 183, 130);
+}
 
+.btn-search {
+  background-color: $light-orange;
+  border: $light-orange solid 1px;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 0 4px 4px 0;
 
+  &:hover {
+    background-color: $light-orange-hover;
+    border: $light-orange-hover solid 1px;
+  }
 }
