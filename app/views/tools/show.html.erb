@@ -20,7 +20,7 @@
                 <div class="tool-actions">
 
 <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-search" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  <button type="button" class="btn button-search" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Reserver
                   </button>
                   <!-- Modal -->
@@ -34,6 +34,10 @@
                         <div class="modal-body">
                         <%= simple_form_for [@tool, @booking], method: :post do |f| %>
                                           <%= f.input :start_date,
+                                              as: :string,
+                                              input_html: { data: { controller: "datepicker" } } %>
+
+                                          <%= f.input :end_date,
                                               as: :string,
                                               input_html: { data: { controller: "datepicker" } } %>
                                               <%= f.submit %>
