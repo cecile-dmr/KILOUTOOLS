@@ -17,12 +17,14 @@ User.destroy_all
 puts "Cleaning users..."
 
 
-cecile = User.create!(email: "cecile@mail.com", password: "hellohello")
 theo = User.create!(email: "theo@mail.com", password: "hellohello")
+cecile = User.create!(email: "cecile@mail.com", password: "hellohello")
 baptiste = User.create!(email: "baptiste@mail.com", password: "hellohello")
 aldjia = User.create!(email: "aldjia@mail.com", password: "hellohello")
 
 puts "ok"
+
+buddy = [cecile, theo, baptiste, aldjia]
 
 test = '../app/assets/images/marteau.jpg'
 
@@ -109,12 +111,23 @@ puts "Finished! Created #{Tool.count} tools."
 # puts "Finished! Created #{Tool.count} tools."
 
 
-# statuses = ["pending", "accepted", "declined"]
+statuses = ["pending", "accepted", "declined"]
 
-# 10.times do
+10.times do
+  puts "Creating bookings..."
+  booking = Booking.new(
+    user_id: User.all.ids.sample,
+    tool_id: Tool.all.ids.sample,
+    start_date: Faker::Date.between(from: '2025-03-04', to: '2025-03-15'),
+    end_date: Faker::Date.between(from: '2025-03-16', to: '2025-03-30'),
+    status: statuses.sample
+  )
+  booking.save!
+end
+# 5.times do
 #   puts "Creating bookings..."
 #   booking = Booking.new(
-#     user_id: User.all.ids.sample,
+#     user: theo,
 #     tool_id: Tool.all.ids.sample,
 #     start_date: Faker::Date.between(from: '2025-03-04', to: '2025-03-15'),
 #     end_date: Faker::Date.between(from: '2025-03-16', to: '2025-03-30'),
@@ -122,4 +135,16 @@ puts "Finished! Created #{Tool.count} tools."
 #   )
 #   booking.save!
 # end
-# puts "Finished! Created #{Booking.count} booking."
+
+# 5.times do
+#   puts "Creating bookings..."
+#   booking = Booking.new(
+#     user_id: User.all.ids.sample,
+#     tool_id: Tool.all.first.id,
+#     start_date: Faker::Date.between(from: '2025-03-04', to: '2025-03-15'),
+#     end_date: Faker::Date.between(from: '2025-03-16', to: '2025-03-30'),
+#     status: statuses.sample
+#   )
+#   booking.save!
+# end
+puts "Finished! Created #{Booking.count} booking."

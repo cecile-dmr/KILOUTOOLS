@@ -1,16 +1,16 @@
-   <div class="containergrid">
-    <% @tools.each do |tool| %>
-      <%= link_to tool, class:"p-0" do  %>
-        <div class="card-trip ">
-          <%= cl_image_tag tool.photo.key %>
-          <div class="card-trip-infos">
-            <div>
-              <h2> <%= tool.name %></h2>
-                <p> <%= tool.description %></p>
-            </div>
-          <h2 class="card-trip-pricing"> <%= tool.price %> € </h2>
-        </div>
+<div class="containergrid">
+  <% @tools.each do |tool| %>
+    <%= link_to tool, class:"p-0" do  %>
+      <div class="card-trip ">
+        <%= cl_image_tag tool.photo.key %>
+        <div class="card-trip-infos">
+          <div>
+            <h2> <%= tool.name %></h2>
+              <p> <%= tool.description %></p>
+          </div>
+        <h2 class="card-trip-pricing"> <%= tool.price %> € </h2>
       </div>
-      <% end  %>
-    <% end %>
-  </div>
+    </div>
+    <% end  %>
+  <% end %>
+</div>
