@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root to: "tools#index"
-  resources :tools, except: :index
+  resources :tools, except: :index do
+    resources :bookings, only: %w[create destroy edit update]
+  end
+
   get "dashboard", to: "pages#dashboard"
 end

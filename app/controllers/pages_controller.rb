@@ -10,3 +10,5 @@ class PagesController < ApplicationController
     @owner_bookings = Booking.includes(tool: :user).where(tools: { user: current_user })
   end
 end
+
+
