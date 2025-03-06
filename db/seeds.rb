@@ -29,25 +29,25 @@ buddy = [cecile, theo, baptiste, aldjia]
 test = '../app/assets/images/marteau.jpg'
 
 
-tool = Tool.new(name: "Marteau", price: 15, description: "Cet outil est en parfait état, comme neuf, prêt à l’emploi.", localisation: "Lille", user: cecile)
+tool = Tool.new(name: "Marteau", price: 15, description: "Cet outil est en parfait état, comme neuf, prêt à l’emploi.", address: "Lille", user: cecile)
 filepath = Rails.root.join('db/images/marteau.jpg')
 file = File.open(filepath)
 tool.photo.attach(io: file, filename: "marteau.jpg", content_type: "image/jpg")
 tool.save
 
-tool = Tool.new(name: "Pince", price: "10", description: "Légeres traces d’utilisation, mais fonctionne parfaitement.", localisation: "Lille", user: cecile)
+tool = Tool.new(name: "Pince", price: "10", description: "Légeres traces d’utilisation, mais fonctionne parfaitement.", address: "Lille", user: cecile)
 filepath = Rails.root.join('db/images/pince.jpg')
 file = File.open(filepath)
 tool.photo.attach(io: file, filename: "pince.jpg", content_type: "image/jpg")
 tool.save
 
-tool = Tool.new(name: "Scie-sauteuse", price: "20", description: "Présente des signes d’usage régulier, mais totalement fonctionnel.", localisation: "Lomme", user: baptiste)
+tool = Tool.new(name: "Scie-sauteuse", price: "20", description: "Présente des signes d’usage régulier, mais totalement fonctionnel.", address: "Lomme", user: baptiste)
 filepath = Rails.root.join('db/images/scie_sauteuse.jpg')
 file = File.open(filepath)
 tool.photo.attach(io: file, filename: "scie_sauteuse.jpg", content_type: "image/jpg")
 tool.save
 
-tool = Tool.new(name: "Perceuse", price: "20", description: "Aucun signe d’usure, elle fonctionne impeccablement.", localisation: "Lambersart",
+tool = Tool.new(name: "Perceuse", price: "20", description: "Aucun signe d’usure, elle fonctionne impeccablement.", address: "Lambersart",
 
   user: aldjia)
 filepath = Rails.root.join('db/images/perceuse.jpg')
@@ -56,10 +56,10 @@ tool.photo.attach(io: file, filename: "perceuse.jpg", content_type: "image/jpg")
 tool.save
 
 
-# Tool.create!(name: "Marteau", price: 15, description: "Cet outil est en parfait état, comme neuf, prêt à l’emploi.", localisation: "Lille", photo: url(test), user: cecile)
-# Tool.create(name: "Pince", price: "10", description: "Légeres traces d’utilisation, mais fonctionne parfaitement.", localisation: "Lille", photo: "pince.jpg", user: cecile)
-# Tool.create(name: "Scie-sauteuse", price: "20", description: "Présente des signes d’usage régulier, mais totalement fonctionnel.", localisation: "Lomme", photo: "scie_sauteuse.jpg", user: baptiste)
-# Tool.create(name: "Perceuse", price: "20", description: "Aucun signe d’usure, elle fonctionne impeccablement.", localisation: "Lambersart", photo: "perceuse.jpg", user: aldjia)
+# Tool.create!(name: "Marteau", price: 15, description: "Cet outil est en parfait état, comme neuf, prêt à l’emploi.", address: "Lille", photo: url(test), user: cecile)
+# Tool.create(name: "Pince", price: "10", description: "Légeres traces d’utilisation, mais fonctionne parfaitement.", address: "Lille", photo: "pince.jpg", user: cecile)
+# Tool.create(name: "Scie-sauteuse", price: "20", description: "Présente des signes d’usage régulier, mais totalement fonctionnel.", address: "Lomme", photo: "scie_sauteuse.jpg", user: baptiste)
+# Tool.create(name: "Perceuse", price: "20", description: "Aucun signe d’usure, elle fonctionne impeccablement.", address: "Lambersart", photo: "perceuse.jpg", user: aldjia)
 
 puts "Finished! Created #{Tool.count} tools."
 
@@ -71,7 +71,7 @@ puts "Finished! Created #{Tool.count} tools."
 #       name: names.sample,
 #       price: Faker::Commerce.price,
 #       description: Faker::Lorem.paragraph(sentence_count: 3),
-#       localisation: localisations.sample,
+#       address: addresss.sample,
 #       photo: "https://loremflickr.com/400/300/tools",
 #       user: user
 #     )
@@ -93,7 +93,7 @@ puts "Finished! Created #{Tool.count} tools."
 # puts "Finished! Created #{User.count} users."
 
 # names = ["perceuse", "tournevis", "marteau", "échelle"]
-# localisations = ["Lille", "Lomme", "Lambersart", "Wambrechies", "Wasquehal"]
+# addresss = ["Lille", "Lomme", "Lambersart", "Wambrechies", "Wasquehal"]
 
 # 25.times do
 #   puts "Creating tools..."
@@ -101,7 +101,7 @@ puts "Finished! Created #{Tool.count} tools."
 #     name: names.sample,
 #     price: Faker::Commerce.price,
 #     description: Faker::Lorem.paragraph(sentence_count: 3),
-#     localisation: localisations.sample,
+#     address: addresss.sample,
 #     photo: "https://loremflickr.com/400/300/tools",
 #     user: User.find(rand(User.first.id..User.last.id))
 #   )

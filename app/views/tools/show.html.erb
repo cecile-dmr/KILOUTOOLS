@@ -12,14 +12,38 @@
             <div class="tool-details">
               <p><strong>Prix :</strong> <%= number_to_currency(@tool.price, unit: "€") %></p>
               <p><strong>Description :</strong> <%= @tool.description %></p>
-              <p><strong>Localisation :</strong> <%= @tool.localisation %></p>
+              <p><strong>address :</strong> <%= @tool.address %></p>
             </div>
 
 <br>
-
               <div class="d-flex justify-content-around" >
                 <div class="tool-actions">
-                  <%= button_to "Reserver",  root_path, class: "btn btn-reserve" %>
+
+<!-- Button trigger modal -->
+                  <button type="button" class="btn btn-search" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Reserver
+                  </button>
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Votre réservation</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <%= simple_form_for [@tool, @booking], method: :post do |f| %>
+                                          <%= f.input :start_date,
+                                              as: :string,
+                                              input_html: { data: { controller: "datepicker" } } %>
+                                              <%= f.submit %>
+                                        <% end  %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+<%# ZONE DE TRAVAIL %>
+
                 </div>
 
 
