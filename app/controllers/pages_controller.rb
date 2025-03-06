@@ -12,3 +12,5 @@ class PagesController < ApplicationController
     @ads_user = Ad.find(current_user.id)
   end
 end
+
+
