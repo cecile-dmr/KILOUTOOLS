@@ -8,7 +8,7 @@ class Tool < ApplicationRecord
   # validates :name, presence: true
   # validates :price, presence: true
   # validates :description, presence: true
-  # validates :localisation, presence: true
+  # validates :address, presence: true
   # validates :photo, presence: true
 
   has_one_attached :photo
