@@ -27,6 +27,9 @@
   text-decoration: none;
 }
 
+.card-trip a {
+  text-decoration: none !important;
+}
 
 .card-trip .card-trip-infos {
   padding: 16px;
@@ -34,6 +37,7 @@
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+  text-decoration: none;
 }
 
 .card-trip-infos .card-trip-user {
@@ -41,4 +45,5 @@
   right: 16px;
   top: -20px;
   width: 40px;
+  text-decoration: none;
 }

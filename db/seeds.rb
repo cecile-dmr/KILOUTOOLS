@@ -17,35 +17,37 @@ User.destroy_all
 puts "Cleaning users..."
 
 
-cecile = User.create!(email: "cecile@mail.com", password: "hellohello")
 theo = User.create!(email: "theo@mail.com", password: "hellohello")
+cecile = User.create!(email: "cecile@mail.com", password: "hellohello")
 baptiste = User.create!(email: "baptiste@mail.com", password: "hellohello")
 aldjia = User.create!(email: "aldjia@mail.com", password: "hellohello")
 
 puts "ok"
 
+buddy = [cecile, theo, baptiste, aldjia]
+
 test = '../app/assets/images/marteau.jpg'
 
 
-tool = Tool.new(name: "Marteau", price: 15, description: "Cet outil est en parfait état, comme neuf, prêt à l’emploi.", localisation: "Lille", user: cecile)
+tool = Tool.new(name: "Marteau", price: 15, description: "Cet outil est en parfait état, comme neuf, prêt à l’emploi.", address: "Lille", user: cecile)
 filepath = Rails.root.join('db/images/marteau.jpg')
 file = File.open(filepath)
 tool.photo.attach(io: file, filename: "marteau.jpg", content_type: "image/jpg")
 tool.save
 
-tool = Tool.new(name: "Pince", price: "10", description: "Légeres traces d’utilisation, mais fonctionne parfaitement.", localisation: "Lille", user: cecile)
+tool = Tool.new(name: "Pince", price: "10", description: "Légeres traces d’utilisation, mais fonctionne parfaitement.", address: "Lille", user: cecile)
 filepath = Rails.root.join('db/images/pince.jpg')
 file = File.open(filepath)
 tool.photo.attach(io: file, filename: "pince.jpg", content_type: "image/jpg")
 tool.save
 
-tool = Tool.new(name: "Scie-sauteuse", price: "20", description: "Présente des signes d’usage régulier, mais totalement fonctionnel.", localisation: "Lomme", user: baptiste)
+tool = Tool.new(name: "Scie-sauteuse", price: "20", description: "Présente des signes d’usage régulier, mais totalement fonctionnel.", address: "Lomme", user: baptiste)
 filepath = Rails.root.join('db/images/scie_sauteuse.jpg')
 file = File.open(filepath)
 tool.photo.attach(io: file, filename: "scie_sauteuse.jpg", content_type: "image/jpg")
 tool.save
 
-tool = Tool.new(name: "Perceuse", price: "20", description: "Aucun signe d’usure, elle fonctionne impeccablement.", localisation: "Lambersart",
+tool = Tool.new(name: "Perceuse", price: "20", description: "Aucun signe d’usure, elle fonctionne impeccablement.", address: "Lambersart",
 
   user: aldjia)
 filepath = Rails.root.join('db/images/perceuse.jpg')
@@ -54,10 +56,10 @@ tool.photo.attach(io: file, filename: "perceuse.jpg", content_type: "image/jpg")
 tool.save
 
 
-# Tool.create!(name: "Marteau", price: 15, description: "Cet outil est en parfait état, comme neuf, prêt à l’emploi.", localisation: "Lille", photo: url(test), user: cecile)
-# Tool.create(name: "Pince", price: "10", description: "Légeres traces d’utilisation, mais fonctionne parfaitement.", localisation: "Lille", photo: "pince.jpg", user: cecile)
-# Tool.create(name: "Scie-sauteuse", price: "20", description: "Présente des signes d’usage régulier, mais totalement fonctionnel.", localisation: "Lomme", photo: "scie_sauteuse.jpg", user: baptiste)
-# Tool.create(name: "Perceuse", price: "20", description: "Aucun signe d’usure, elle fonctionne impeccablement.", localisation: "Lambersart", photo: "perceuse.jpg", user: aldjia)
+# Tool.create!(name: "Marteau", price: 15, description: "Cet outil est en parfait état, comme neuf, prêt à l’emploi.", address: "Lille", photo: url(test), user: cecile)
+# Tool.create(name: "Pince", price: "10", description: "Légeres traces d’utilisation, mais fonctionne parfaitement.", address: "Lille", photo: "pince.jpg", user: cecile)
+# Tool.create(name: "Scie-sauteuse", price: "20", description: "Présente des signes d’usage régulier, mais totalement fonctionnel.", address: "Lomme", photo: "scie_sauteuse.jpg", user: baptiste)
+# Tool.create(name: "Perceuse", price: "20", description: "Aucun signe d’usure, elle fonctionne impeccablement.", address: "Lambersart", photo: "perceuse.jpg", user: aldjia)
 
 puts "Finished! Created #{Tool.count} tools."
 
@@ -69,7 +71,7 @@ puts "Finished! Created #{Tool.count} tools."
 #       name: names.sample,
 #       price: Faker::Commerce.price,
 #       description: Faker::Lorem.paragraph(sentence_count: 3),
-#       localisation: localisations.sample,
+#       address: addresss.sample,
 #       photo: "https://loremflickr.com/400/300/tools",
 #       user: user
 #     )
@@ -91,7 +93,7 @@ puts "Finished! Created #{Tool.count} tools."
 # puts "Finished! Created #{User.count} users."
 
 # names = ["perceuse", "tournevis", "marteau", "échelle"]
-# localisations = ["Lille", "Lomme", "Lambersart", "Wambrechies", "Wasquehal"]
+# addresss = ["Lille", "Lomme", "Lambersart", "Wambrechies", "Wasquehal"]
 
 # 25.times do
 #   puts "Creating tools..."
@@ -99,7 +101,7 @@ puts "Finished! Created #{Tool.count} tools."
 #     name: names.sample,
 #     price: Faker::Commerce.price,
 #     description: Faker::Lorem.paragraph(sentence_count: 3),
-#     localisation: localisations.sample,
+#     address: addresss.sample,
 #     photo: "https://loremflickr.com/400/300/tools",
 #     user: User.find(rand(User.first.id..User.last.id))
 #   )
@@ -109,12 +111,23 @@ puts "Finished! Created #{Tool.count} tools."
 # puts "Finished! Created #{Tool.count} tools."
 
 
-# statuses = ["pending", "accepted", "declined"]
+statuses = ["pending", "accepted", "declined"]
 
-# 10.times do
+10.times do
+  puts "Creating bookings..."
+  booking = Booking.new(
+    user_id: User.all.ids.sample,
+    tool_id: Tool.all.ids.sample,
+    start_date: Faker::Date.between(from: '2025-03-04', to: '2025-03-15'),
+    end_date: Faker::Date.between(from: '2025-03-16', to: '2025-03-30'),
+    status: statuses.sample
+  )
+  booking.save!
+end
+# 5.times do
 #   puts "Creating bookings..."
 #   booking = Booking.new(
-#     user_id: User.all.ids.sample,
+#     user: theo,
 #     tool_id: Tool.all.ids.sample,
 #     start_date: Faker::Date.between(from: '2025-03-04', to: '2025-03-15'),
 #     end_date: Faker::Date.between(from: '2025-03-16', to: '2025-03-30'),
@@ -122,4 +135,16 @@ puts "Finished! Created #{Tool.count} tools."
 #   )
 #   booking.save!
 # end
-# puts "Finished! Created #{Booking.count} booking."
+
+# 5.times do
+#   puts "Creating bookings..."
+#   booking = Booking.new(
+#     user_id: User.all.ids.sample,
+#     tool_id: Tool.all.first.id,
+#     start_date: Faker::Date.between(from: '2025-03-04', to: '2025-03-15'),
+#     end_date: Faker::Date.between(from: '2025-03-16', to: '2025-03-30'),
+#     status: statuses.sample
+#   )
+#   booking.save!
+# end
+puts "Finished! Created #{Booking.count} booking."

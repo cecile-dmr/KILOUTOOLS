@@ -19,5 +19,7 @@
       <%= yield %>
     </div>
     <%= render "shared/footer" %>
+
+    <%= Rails.env.product? ? "" : console%>
   </body>
 </html>
