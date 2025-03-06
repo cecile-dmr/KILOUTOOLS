@@ -50,6 +50,13 @@ class ToolsController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
+  def index
+    @tools = Tool.all
+    if params[:query].present?
+      @tools = @tools.where("name ILIKE ?", "%#{params[:query]}%")
+    end
+  end
+
   private
 
   def tool_params
