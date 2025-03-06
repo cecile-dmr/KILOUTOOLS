@@ -3,10 +3,12 @@ class ToolsController < ApplicationController
 
   def index
     @tools = Tool.all
-    @markers = @tools.geocoded.map do |tool|
+    @markers = @tools.map do |tool|
       {
         lat: tool.latitude,
-        lng: tool.longitude
+        lng: tool.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {tool: tool}),
+        marker_html: render_to_string(partial: "marker", locals: {tool: tool})
       }
     end
   end
