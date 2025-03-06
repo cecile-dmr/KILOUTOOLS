@@ -2,13 +2,11 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
   def dashboard
-    # bookings that the user booked
     @user = current_user
-    # bookings for which the user is the owner
-    @owner_bookings = Booking.includes(tool: :user).where(users: {id: current_user})
-  end
+    # booking for tools the user wants to rent
+    @user_bookings = Booking.where(user: @user);
 
-  def ads_user
-    @ads_user = Ad.find(current_user.id)
+    # bookings for which the user is the owner
+    @owner_bookings = Booking.includes(tool: :user).where(tools: { user: current_user })
   end
 end
