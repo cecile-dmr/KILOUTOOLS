@@ -24,7 +24,7 @@
               <p> Du <%= user_booking.start_date %> au <%= user_booking.end_date %></p>
               <p> <%= user_booking.status %></p>
             </div>
-          <h2 class="card-trip-pricing"> <%= user_booking.tool.price %> € </h2>
+          <h2 class="card-trip-pricing"> <%= user_booking.tool.price * (user_booking.end_date - user_booking.start_date).to_i %> € </h2>
         </div>
       </div>
       <%# <% end  %>
