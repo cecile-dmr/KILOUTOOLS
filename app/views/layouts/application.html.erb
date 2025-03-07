@@ -12,12 +12,13 @@
   </head>
 
   <body>
-    <%= render "shared/navbar" %>
-    <%= render "shared/flashes" %>
+    <div class='d-flex flex-column justify-content-center' style="min-height: 100vh">
+      <%= render "shared/navbar" %>
+      <%= render "shared/flashes" %>
 
-    <div style="min-height: 78vh; ">
-      <%= yield %>
+       <main class='flex-grow-1'><%= yield %></main>
+
+      <%= render "shared/footer" %>
     </div>
-    <%= render "shared/footer" %>
   </body>
 </html>

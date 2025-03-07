@@ -7,30 +7,31 @@
 
 <div class="container">
   <h2 class="my-4">Mes Réservations 📆</h2>
-</div>
 
-<% if @user_bookings.count == 0 %>
-  <div class="container"><p>Vous n'avez aucune demande en attente.</p></div>
-<% else %>
-  <div class="containergrid">
-    <% @user_bookings.each do |user_booking|  %>
-      <%# <%= link_to user_booking, class:"p-0" do  %>
-        <div class="card-trip ">
-          <%= cl_image_tag user_booking.tool.photo.key %>
-          <div class="card-trip-infos">
-            <div>
-              <h2> <%= user_booking.tool.name %></h2>
-              <p> <%= user_booking.tool.address %></p>
-              <p> Du <%= user_booking.start_date %> au <%= user_booking.end_date %></p>
-              <p> <%= user_booking.status %></p>
-            </div>
-          <h2 class="card-trip-pricing"> <%= user_booking.price %> € </h2>
+  <% if @user_bookings.count == 0 %>
+    <div class="container"><p>Vous n'avez aucune demande en attente.</p></div>
+  <% else %>
+    <div class="containergrid">
+      <% @user_bookings.each do |user_booking|  %>
+        <%# <%= link_to user_booking, class:"p-0" do  %>
+          <div class="card-trip ">
+            <%= cl_image_tag user_booking.tool.photo.key %>
+            <div class="card-trip-infos">
+              <div>
+                <h2> <%= user_booking.tool.name %></h2>
+                <p> <%= user_booking.tool.address %></p>
+                <p> Du <%= user_booking.start_date %> au <%= user_booking.end_date %></p>
+                <p> <%= user_booking.status %></p>
+              </div>
+            <h2 class="card-trip-pricing"> <em>Total</em> :  <%= user_booking.tool.price * (user_booking.end_date - user_booking.start_date).to_i %> € </h2>
+          </div>
+
         </div>
-      </div>
-      <%# <% end  %>
-    <% end %>
-  </div>
-<% end %>
+        <%# <% end  %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
 <div class="container">
   <h2 class="my-4">Mes Demandes ⏳</h2>
@@ -77,29 +78,27 @@
 
 <div class="container">
   <h2 class="my-4">Mes Outils 🛠️</h2>
-</div>
 
-<% if @tools.count == 0 %>
-  <div class="container"><p>Vous n'avez aucun outil en location.</p></div>
-<% else %>
-  <div class="containergrid">
-    <% @tools.each do |tool|  %>
-      <%= link_to tool_path(tool.id), class: "text-decoration-none" do %>
-        <div class="card-trip ">
-        <% if tool.photo.key %>
-          <%= cl_image_tag tool.photo.key %>
-        <% else %>
-        <%= image_tag "pince.jpg" %>
-        <% end %>
-          <div class="card-trip-infos">
-            <div>
-              <h2> <%= tool.name %></h2>
-                <p> <%= tool.description %></p>
+  <% if @tools.count == 0 %>
+    <div><p>Vous n'avez aucun outil en location.</p></div>
+  <% else %>
+    <div class="containergrid">
+      <% @tools.each do |tool|  %>
+        <%= link_to tool_path(tool.id), class: "text-decoration-none" do %>
+          <div class="card-trip ">
+            <%= cl_image_tag tool.photo.key %>
+            <div class="card-trip-infos">
+              <div>
+                <h2> <%= tool.name %></h2>
+                  <p> <%= tool.description %></p>
+              </div>
+              <h2 class="card-trip-pricing"> <%= tool.price %> € </h2>
+
             </div>
-            <h2 class="card-trip-pricing"> <%= tool.price %> € </h2>
           </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-<% end %>
+    </div>
+  <% end %>
+
+</div>
