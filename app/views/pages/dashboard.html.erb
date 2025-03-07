@@ -43,7 +43,7 @@
   <div class="d-flex align-items-center flex-column">
     <% @owner_bookings.each do |owner_booking|  %>
       <% if owner_booking.status == "En attente"%>
-        <div class="card-status-booking rounded-5 p-2">
+        <div class="card-status-booking rounded-5 p-2 mb-3">
           <div class="card-booking-img-container rounded-4"><%= cl_image_tag owner_booking.tool.photo.key, class: "card-booking-img rounded-4" %></div>
           <div class="card-status-detail">
             <p class="m-0"><%= owner_booking.tool.name %></p>
@@ -73,19 +73,18 @@
 <% else %>
   <div class="containergrid">
     <% @tools.each do |tool|  %>
-      <div class="card-trip ">
-        <%= cl_image_tag tool.photo.key %>
-        <div class="card-trip-infos">
-          <div>
-            <h2> <%= tool.name %></h2>
-              <p> <%= tool.description %></p>
+      <%= link_to tool_path(tool.id), class: "text-decoration-none" do %>
+        <div class="card-trip ">
+          <%= cl_image_tag tool.photo.key %>
+          <div class="card-trip-infos">
+            <div>
+              <h2> <%= tool.name %></h2>
+                <p> <%= tool.description %></p>
+            </div>
+            <h2 class="card-trip-pricing"> <%= tool.price %> € </h2>
           </div>
-          <h2 class="card-trip-pricing"> <%= tool.price %> € </h2>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 <% end %>
-
-
-<%= console %>
