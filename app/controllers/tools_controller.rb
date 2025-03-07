@@ -8,7 +8,7 @@ class ToolsController < ApplicationController
       @tools = Tool.all
     end
 
-    @tools = @tools.where.not(user: current_user) 
+    @tools = @tools.where.not(user: current_user)
 
     @markers = @tools.geocoded.map do |tool|
       {
@@ -47,7 +47,7 @@ class ToolsController < ApplicationController
     @tool = Tool.find(params[:id])
     if @tool.update(tool_params)
       #flash[:success] = "Tool updated!"
-      redirect_to tool_path(@tool), notice: "Outil mis à jour !"
+      redirect_to dashboard_path, notice: "Outil mis à jour !"
     else
       render action :edit
     end
@@ -55,8 +55,11 @@ class ToolsController < ApplicationController
 
   def destroy
     @tool = Tool.find(params[:id])
-    @tool.destroy
-    redirect_to root_path, status: :see_other
+    # if @tool.bookings.each { |booking| booking.end_date < Date.today }
+      @tool.destroy
+    # else
+
+    redirect_to dashboard_path, status: :see_other
   end
 
   private

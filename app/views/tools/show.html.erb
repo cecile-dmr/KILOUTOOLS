@@ -1,61 +1,69 @@
+<div class="container">
 
-<%# SHOW DU LOCATAIRE  %>
+  <% if @tool.user == current_user %>
 
-    <div class="container">
-        <div class="card-product rounded-5 shadow row">
-          <div class="col-6 left-side p-0" >
-          <div class='div-img rounded-5'><%= image_tag @tool.photo, class: "img img-size rounded-5 img-zoom object-fit-cover" %></div>
-          </div>
-          <div class="col-6 p-4">
-            <h1 class="tool-title"><%= @tool.name %></h1>
-
-
-            <div class="tool-details">
-              <p><strong>Prix :</strong> <%= number_to_currency(@tool.price, unit: "€") %></p>
-              <p><strong>Description :</strong> <%= @tool.description %></p>
-              <p><strong>address :</strong> <%= @tool.address %></p>
-            </div>
-
-<br>
-              <div class="d-flex justify-content-around" >
-
-
-                  <!-- Button trigger modal -->
-
-                  <% unless @tool.user == current_user %>
-                  <button type="button" class="btn-search btn-45" data-bs-toggle="modal" data-bs-target="#exampleModal">
-
-                    Reserver
-                  </button>
-                  <% end %>
-                  <!-- Modal -->
-                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Votre réservation</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body" data-controller="datepicker">
-                        <%= simple_form_for [@tool, @booking] do |f| %>
-                                          <%= f.input :start_date, label:'Début de la réservation',
-                                              as: :string,
-                                              input_html: { data: {datepicker_target: "startDate" } } %>
-
-                                          <%= f.input :end_date, label:'Fin de la réservation',
-                                              as: :string,
-                                              input_html: { data: { datepicker_target: "endDate" } } %>
-                                              <%= f.submit "Réserver", class: "btn btn-primary w-100"%>
-                                        <% end  %>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <%= link_to "Retour à la liste", root_path, class: "btn btn-back btn-45" %>
-
-              </div>
-
-          </div>
+    <div class="card-product rounded-5 shadow row">
+      <div class="col-6 left-side p-0" >
+        <div class='div-img rounded-5'><%= image_tag @tool.photo, class: "img img-size rounded-5 img-zoom object-fit-cover" %></div>
+      </div>
+      <div class="col-6 p-4">
+        <h1 class="tool-title"><%= @tool.name %></h1>
+        <div class="tool-details">
+          <p><strong>Prix :</strong> <%= number_to_currency(@tool.price, unit: "€") %></p>
+          <p><strong>Description :</strong> <%= @tool.description %></p>
+          <p><strong>Adresse :</strong> <%= @tool.address %></p>
+        </div>
+        <div class="d-flex gap-3" >
+          <%= link_to "Modifier", edit_tool_path(params[:id]), class: "btn btn-orange btn-45" %>
+          <%= link_to "Supprimer", tool_path(params[:id]), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } , class: "btn btn-supp btn-45" %>
         </div>
       </div>
+    </div>
+
+  <% else %>
+
+    <div class="card-product rounded-5 shadow row">
+      <div class="col-6 left-side p-0" >
+        <div class='div-img rounded-5'><%= image_tag @tool.photo, class: "img img-size rounded-5 img-zoom object-fit-cover" %></div>
+      </div>
+      <div class="col-6 p-4">
+        <h1 class="tool-title"><%= @tool.name %></h1>
+        <div class="tool-details">
+          <p><strong>Prix :</strong> <%= number_to_currency(@tool.price, unit: "€") %></p>
+          <p><strong>Description :</strong> <%= @tool.description %></p>
+          <p><strong>Adresse :</strong> <%= @tool.address %></p>
+        </div>
+        <div class="d-flex justify-content-around" >
+          <button type="button" class="btn-search btn-45" data-bs-toggle="modal" data-bs-target="#exampleModal">Reserver</button>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Votre réservation</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" data-controller="datepicker">
+                <%= simple_form_for [@tool, @booking] do |f| %>
+                                  <%= f.input :start_date, label:'Début de la réservation',
+                                      as: :string,
+                                      input_html: { data: {datepicker_target: "startDate" } } %>
+
+                                  <%= f.input :end_date, label:'Fin de la réservation',
+                                      as: :string,
+                                      input_html: { data: { datepicker_target: "endDate" } } %>
+                                      <%= f.submit "Réserver", class: "btn btn-primary w-100"%>
+                                <% end  %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <%= link_to "Retour à la liste", root_path, class: "btn btn-back" %>
+
+        </div>
+      </div>
+    </div>
+    
+  <% end %>
+</div>
