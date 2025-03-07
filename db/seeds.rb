@@ -34,13 +34,13 @@ file = File.open(filepath)
 tool.photo.attach(io: file, filename: "marteau.jpg", content_type: "image/jpg")
 tool.save
 
-tool = Tool.new(name: "Pince", price: "10", description: "Légeres traces d’utilisation, mais fonctionne parfaitement.", address: "Lille", user: aldjia)
+tool = Tool.new(name: "Pince", price: "10", description: "Légeres traces d’utilisation, mais fonctionne parfaitement.", address: "Tourcoing", user: aldjia)
 filepath = Rails.root.join('app/assets/images/pince.jpg')
 file = File.open(filepath)
 tool.photo.attach(io: file, filename: "pince.jpg", content_type: "image/jpg")
 tool.save
 
-tool = Tool.new(name: "Scie-sauteuse", price: "20", description: "Présente des signes d’usage régulier, mais totalement fonctionnel.", address: "Lomme", user: cecile)
+tool = Tool.new(name: "Scie-sauteuse", price: "20", description: "Présente des signes d’usage régulier, mais totalement fonctionnel.", address: "Roubaix", user: cecile)
 filepath = Rails.root.join('app/assets/images/scie_sauteuse.jpg')
 file = File.open(filepath)
 tool.photo.attach(io: file, filename: "scie_sauteuse.jpg", content_type: "image/jpg")
@@ -167,7 +167,9 @@ puts "Finished! Created #{Tool.count} tools."
 # puts "Finished! Created #{Tool.count} tools."
 
 
-statuses = ["En attente", "Acceptée", "Déclinée"]
+
+statuses = ["En attente", "Acceptée", "Refusée"]
+
 
 10.times do
   puts "Creating bookings..."

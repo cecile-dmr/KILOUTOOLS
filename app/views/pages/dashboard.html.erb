@@ -1,36 +1,91 @@
-<h1>DASHBOARD</h1>
+<div class="banner">
+  <img src="<%= asset_path('banner_dashboard.jpg') %>" alt="Bannière" class="banner-image">
+   <div class="banner-text kiloutools-nav">
+    <p>MON DASHBOARD 🛠️</p>
+  </div>
+</div>
 
-<div class="containergrid">
-  <% @user_bookings.each do |user_booking|  %>
-    <%# <%= link_to user_booking, class:"p-0" do  %>
-      <div class="card-trip ">
-        <%= cl_image_tag user_booking.tool.photo.key %>
-        <div class="card-trip-infos">
-          <div>
-            <h2> <%= user_booking.tool.name %></h2>
+<div class="container">
+  <h2 class="my-4">Mes Réservations 📆</h2>
+</div>
+
+<% if @user_bookings.count == 0 %>
+  <div class="container"><p>Vous n'avez aucune demande en attente.</p></div>
+<% else %>
+  <div class="containergrid">
+    <% @user_bookings.each do |user_booking|  %>
+      <%# <%= link_to user_booking, class:"p-0" do  %>
+        <div class="card-trip ">
+          <%= cl_image_tag user_booking.tool.photo.key %>
+          <div class="card-trip-infos">
+            <div>
+              <h2> <%= user_booking.tool.name %></h2>
               <p> <%= user_booking.tool.address %></p>
-          </div>
-        <h2 class="card-trip-pricing"> <%= user_booking.tool.price %> € </h2>
+              <p> Du <%= user_booking.start_date %> au <%= user_booking.end_date %></p>
+              <p> <%= user_booking.status %></p>
+            </div>
+          <h2 class="card-trip-pricing"> <%= user_booking.tool.price %> € </h2>
+        </div>
       </div>
-    </div>
-    <%# <% end  %>
-  <% end %>
+      <%# <% end  %>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="container">
+  <h2 class="my-4">Mes Demandes ⏳</h2>
 </div>
 
+<%# cibler toutes les  %>
+<% if @owner_bookings.where(status: "En attente").count == 0%>
+  <div class="container"><p>Vous n'avez aucune demande en attente.</p></div>
+<% else %>
+  <div class="d-flex align-items-center flex-column">
+    <% @owner_bookings.each do |owner_booking|  %>
+      <% if owner_booking.status == "En attente"%>
+        <div class="card-status-booking rounded-5 p-2">
+          <div class="card-booking-img-container rounded-4"><%= cl_image_tag owner_booking.tool.photo.key, class: "card-booking-img rounded-4" %></div>
+          <div class="card-status-detail">
+            <p class="m-0"><%= owner_booking.tool.name %></p>
+            <p class="m-0">Du <%= owner_booking.start_date %> au <%= owner_booking.end_date %></p>
+            <p class="m-0"><%= owner_booking.tool.price %>€/jour</p>
+          </div>
+          <div class="w-25 h-100 d-flex justify-content-between align-items-center">
+            <%= button_to tool_booking_path(owner_booking.tool.id, owner_booking.id, status: "Acceptée"), method: :patch, class: "button-status button-status-add rounded-4" do %>
+              <i class="fa-solid fa-check d-block"></i>
+            <% end %>
+            <%= button_to tool_booking_path(owner_booking.tool.id, owner_booking.id, status: "Refusée"), method: :patch, class: "button-status button-status-reject rounded-4" do %>
+              <i class="fa-solid fa-xmark d-block"></i>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
 
-<div class="containergrid">
-  <% @owner_bookings.each do |owner_booking|  %>
-    <%# <%= link_to user_booking, class:"p-0" do  %>
+<div class="container">
+  <h2 class="my-4">Mes Outils 🛠️</h2>
+</div>
+
+<% if @tools.count == 0 %>
+  <div class="container"><p>Vous n'avez aucun outil en location.</p></div>
+<% else %>
+  <div class="containergrid">
+    <% @tools.each do |tool|  %>
       <div class="card-trip ">
-        <%= cl_image_tag owner_booking.tool.photo.key %>
+        <%= cl_image_tag tool.photo.key %>
         <div class="card-trip-infos">
           <div>
-            <h2> <%= owner_booking.tool.name %></h2>
-              <p> <%= owner_booking.tool.description %></p>
+            <h2> <%= tool.name %></h2>
+              <p> <%= tool.description %></p>
           </div>
-        <h2 class="card-trip-pricing"> <%= owner_booking.tool.price %> € </h2>
+          <h2 class="card-trip-pricing"> <%= tool.price %> € </h2>
+        </div>
       </div>
-    </div>
-    <%# <% end  %>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+<% end %>
+
+
+<%= console %>
