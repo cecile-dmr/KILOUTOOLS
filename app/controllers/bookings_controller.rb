@@ -6,7 +6,6 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.tool = tool
     number_of_days = (@booking.end_date - @booking.start_date).to_i
-    @booking.price = number_of_days * tool.price
     @booking.status = "En attente"
     redirect_to dashboard_path if @booking.save
   end
