@@ -55,11 +55,12 @@ class ToolsController < ApplicationController
 
   def destroy
     @tool = Tool.find(params[:id])
-    # if @tool.bookings.each { |booking| booking.end_date < Date.today }
+    if @tool.bookings.all? { |booking| booking.end_date < Date.today || booking.status == "Refusée" || booking.status == "En attente" }
       @tool.destroy
-    # else
-
-    redirect_to dashboard_path, status: :see_other
+      redirect_to dashboard_path, status: :see_other
+    else
+      redirect_to tool_path(params[:id]), alert: "Vous avez encore des locations en cours !"
+    end
   end
 
   private
