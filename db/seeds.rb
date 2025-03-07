@@ -111,7 +111,7 @@ puts "Finished! Created #{Tool.count} tools."
 # puts "Finished! Created #{Tool.count} tools."
 
 
-statuses = ["pending", "accepted", "declined"]
+statuses = ["En attente", "Acceptée", "Refusée"]
 
 10.times do
   puts "Creating bookings..."
