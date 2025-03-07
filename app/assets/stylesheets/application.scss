@@ -43,6 +43,7 @@ h1, h2 {
     font-weight: 800;
     font-size: 25px;
     font-style: italic;
+    color: $light-blue;
   }
 
  .banner {
@@ -72,4 +73,8 @@ h1, h2 {
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
     width: 100%;
   }
+}
+
+.link-to {
+  text-decoration: none;
 }
