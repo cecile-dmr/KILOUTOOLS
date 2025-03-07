@@ -1,4 +1,9 @@
-<h1>DASHBOARD</h1>
+<div class="banner">
+  <img src="<%= asset_path('banniere.jpg') %>" alt="Bannière" class="banner-image">
+   <div class="banner-text kiloutools-nav">
+    <p>LOUEZ VOS OUTILS PRÈS DE CHEZ VOUS !</p>
+  </div>
+</div>
 
 <div class="containergrid">
   <% @user_bookings.each do |user_booking|  %>
@@ -8,7 +13,9 @@
         <div class="card-trip-infos">
           <div>
             <h2> <%= user_booking.tool.name %></h2>
-              <p> <%= user_booking.tool.address %></p>
+            <p> <%= user_booking.tool.address %></p>
+            <p> <%= user_booking.start_date %></p>
+            <p> <%= user_booking.end_date %></p>
           </div>
         <h2 class="card-trip-pricing"> <%= user_booking.tool.price %> € </h2>
       </div>
@@ -17,20 +24,52 @@
   <% end %>
 </div>
 
+<div class="banner">
+  <img src="<%= asset_path('banniere.jpg') %>" alt="Bannière" class="banner-image">
+   <div class="banner-text kiloutools-nav">
+    <p>LOUEZ VOS OUTILS PRÈS DE CHEZ VOUS !</p>
+  </div>
+</div>
 
-<div class="containergrid">
+<div class="d-flex justify-content-center">
   <% @owner_bookings.each do |owner_booking|  %>
-    <%# <%= link_to user_booking, class:"p-0" do  %>
-      <div class="card-trip ">
-        <%= cl_image_tag owner_booking.tool.photo.key %>
-        <div class="card-trip-infos">
-          <div>
-            <h2> <%= owner_booking.tool.name %></h2>
-              <p> <%= owner_booking.tool.description %></p>
-          </div>
-        <h2 class="card-trip-pricing"> <%= owner_booking.tool.price %> € </h2>
+    <div class="card-status-booking rounded-5 p-2">
+      <div class="card-booking-img-container rounded-4"><%= cl_image_tag owner_booking.tool.photo.key, class: "card-booking-img rounded-4" %></div>
+      <div class="card-status-detail">
+        <p class="m-0"><%= owner_booking.tool.name %></p>
+        <p class="m-0">Du <%= owner_booking.start_date %> au <%= owner_booking.end_date %></p>
+        <p class="m-0">Total : <%= owner_booking.tool.price %> €</p>
+      </div>
+      <div class="w-25 h-100 d-flex justify-content-between align-items-center">
+        <%= link_to dashboard_path, class: "text-decoration-none text-light" do %>
+          <i class="fa-solid fa-check p-3 button-status-add rounded-4"></i>
+        <% end %>
+        <%= link_to dashboard_path, class: "text-decoration-none text-light" do %>
+          <i class="fa-solid fa-xmark p-3 button-status-reject rounded-4"></i>
+        <% end %>
       </div>
     </div>
-    <%# <% end  %>
+  <% end %>
+</div>
+
+<div class="banner">
+  <img src="<%= asset_path('banniere.jpg') %>" alt="Bannière" class="banner-image">
+   <div class="banner-text kiloutools-nav">
+    <p>LOUEZ VOS OUTILS PRÈS DE CHEZ VOUS !</p>
+  </div>
+</div>
+
+<div class="containergrid">
+  <% @tools.each do |tool|  %>
+    <div class="card-trip ">
+      <%= cl_image_tag tool.photo.key %>
+      <div class="card-trip-infos">
+        <div>
+          <h2> <%= tool.name %></h2>
+            <p> <%= tool.description %></p>
+        </div>
+        <h2 class="card-trip-pricing"> <%= tool.price %> € </h2>
+      </div>
+    </div>
   <% end %>
 </div>
