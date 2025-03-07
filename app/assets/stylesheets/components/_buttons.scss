@@ -26,7 +26,31 @@
   color: rgb(76, 76, 76);
   padding: 5px 10px;
   border-radius: 4px;
+}
 
+.btn-orange {
+  background-color: $light-orange;
+  border: $light-orange solid 1px;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  &:hover {
+    background-color: $light-orange-hover;
+    color: white;
+
+  }
+}
+.btn-supp {
+  background-color: rgb(195, 37, 37);
+  border: rgb(195, 37, 37) solid 1px;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  &:hover {
+    background-color: rgb(140, 26, 26);
+    color: white;
+
+  }
 }
 
 .btn-45 {
