@@ -12,4 +12,5 @@ class PagesController < ApplicationController
     # tools that belong to the user
     @tools = current_user.tools
   end
+
 end
