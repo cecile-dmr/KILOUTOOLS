@@ -13,9 +13,11 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.update(dashboard_params)
     if params[:status] == "Acceptée"
-      redirect_to dashboard_path, notice: "La location a bien été acceptée"
+      redirect_to dashboard_path
+      flash[notice:]
     elsif params[:status] == "Refusée"
       redirect_to dashboard_path, notice: "La location a bien été refusée"
+      flash[notice:]
     end
   end
 
