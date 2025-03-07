@@ -12,6 +12,11 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find(params[:id])
     @booking.update(dashboard_params)
+    if params[:status] == "Acceptée"
+      redirect_to dashboard_path, notice: "La location a bien été acceptée"
+    elsif params[:status] == "Refusée"
+      redirect_to dashboard_path, notice: "La location a bien été refusée"
+    end
   end
 
   private
@@ -21,6 +26,7 @@ class BookingsController < ApplicationController
   end
 
   def dashboard_params
-    params.require(:booking).permit(:status)
+    params.permit(:status)
   end
+
 end
