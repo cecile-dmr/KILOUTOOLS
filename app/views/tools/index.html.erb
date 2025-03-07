@@ -18,15 +18,23 @@
   </div>
 </div>
 
-  <div class="containergrid">
-  <% @tools.each do |tool| %>
-    <%= link_to tool, class:"p-0 text-decoration-none" do  %>
-      <div class="card-trip ">
-        <%= cl_image_tag tool.photo.key %>
-        <div class="card-trip-infos">
-          <div>
-            <h2> <%= tool.name %></h2>
-              <p> <%= tool.description %></p>
+<% if params[:query].present? && @tools.empty? %>
+  <div class="text-center text-muted fst-italic mt-2">
+    Aucune outil correspondant.
+  </div>
+<% end %>
+
+   <div class="containergrid">
+    <% @tools.each do |tool| %>
+      <%= link_to tool, class:"p-0 text-decoration-none" do  %>
+        <div class="card-trip ">
+          <%= cl_image_tag tool.photo.key %>
+          <div class="card-trip-infos">
+            <div>
+              <h2> <%= tool.name %></h2>
+                <p> <%= tool.description %></p>
+            </div>
+            <h2 class="card-trip-pricing"><%= tool.price %>€</h2>
           </div>
           <h2 class="card-trip-pricing"><%= tool.price %>€</h2>
         </div>
