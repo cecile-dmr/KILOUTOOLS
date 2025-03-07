@@ -8,10 +8,23 @@
   border: $light-orange solid 1px;
   color: white;
   padding: 5px 10px;
-  border-radius: 0 4px 4px 0;
+  border-radius: 4px;
 
   &:hover {
     background-color: $light-orange-hover;
     border: $light-orange-hover solid 1px;
   }
+}
+
+.btn-back {
+  background-color: rgb(226, 226, 226);
+  border: rgb(207, 207, 207) solid 1px;
+  color: rgb(76, 76, 76);
+  padding: 5px 10px;
+  border-radius: 4px;
+
+}
+
+.btn-45 {
+  width: 45%;
 }
