@@ -3,6 +3,9 @@ source "https://rubygems.org"
 ruby "3.3.5"
 
 # installée par Céc
+
+
+# installée par Céc
 gem "cloudinary"
 
 #installé par Aldjia

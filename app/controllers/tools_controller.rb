@@ -2,7 +2,14 @@ class ToolsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @tools = Tool.all
+    if params[:query].present?
+      @tools = Tool.where("name ILIKE ? OR description ILIKE ?", "%#{params[:query]}%", "%#{params[:query]}%")
+    else
+      @tools = Tool.all
+    end
+
+    @tools = @tools.where.not(user: current_user) 
+
     @markers = @tools.geocoded.map do |tool|
       {
         lat: tool.latitude,
