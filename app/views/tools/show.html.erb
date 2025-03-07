@@ -4,7 +4,13 @@
     <div class="container">
         <div class="card-product rounded-5 shadow row">
           <div class="col-6 left-side p-0" >
-          <div class='div-img rounded-5'><%= image_tag @tool.photo, class: "img img-size rounded-5 img-zoom object-fit-cover" %></div>
+          <div class='div-img rounded-5'>
+          <% if  @tool.photo.attached?%>
+          <%= cl_image_tag @tool.photo.key, class: "img img-size rounded-5 img-zoom object-fit-cover" %>
+          <% else %>
+          <%= image_tag "pince.jpg", class: "img img-size rounded-5 img-zoom object-fit-cover"   %>
+          <% end %>
+          </div>
           </div>
           <div class="col-6 p-4">
             <h1 class="tool-title"><%= @tool.name %></h1>
